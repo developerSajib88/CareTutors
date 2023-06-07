@@ -1,16 +1,21 @@
 import 'package:caretutors/controller/auth_controller/auth_controller.dart';
 import 'package:caretutors/controller/navigation_controller/navigation_controller.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:caretutors/controller/onboarding_controller/onboarding_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
 
 import 'theme/app_theme.dart';
 import 'view/screen/others_screen/splash_screen.dart';
 
-void main(){
+void main()async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Hive.initFlutter();
   runApp(MultiProvider(providers: [
     ChangeNotifierProvider(create: (context)=> AuthController()),
     ChangeNotifierProvider(create: (context)=> BottomNavigationController()),
+    ChangeNotifierProvider(create: (context)=> OnboardingController()),
   ],
   child: const MyApp(),
   ));

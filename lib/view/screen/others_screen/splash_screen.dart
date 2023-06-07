@@ -1,11 +1,14 @@
 import 'dart:async';
 
+import 'package:caretutors/controller/onboarding_controller/onboarding_controller.dart';
 import 'package:caretutors/utils/app_colors.dart';
 import 'package:caretutors/utils/app_constants.dart';
 import 'package:caretutors/view/screen/navigation_screen/bottom_navigation_screen.dart';
+import 'package:caretutors/view/screen/others_screen/onboarding_screen.dart';
 import 'package:caretutors/view/widget/backgrount_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -20,10 +23,15 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    
-    /// Navigate main screen from splash screen
+
+    context.read<OnboardingController>().updateUserPreviousView();
+    /// Navigate main screen or Onboarding screen from splash screen
     Timer(const Duration(seconds: 3), () {
-      Navigator.pushReplacement(context, CupertinoPageRoute(builder: (context)=>const BottomNavigationScreen()));
+      if(context.read<OnboardingController>().userIsFirstTime){
+        Navigator.pushReplacement(context, CupertinoPageRoute(builder: (context)=>const OnboardingScreen()));
+      }else{
+        Navigator.pushReplacement(context, CupertinoPageRoute(builder: (context)=>const BottomNavigationScreen()));
+      }
     });
     
   }

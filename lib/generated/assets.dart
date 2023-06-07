@@ -5,5 +5,6 @@ class Assets {
   static const String iconsIcDocument = 'assets/icons/ic_document.png';
   static const String imagesAvatar = 'assets/images/avatar.png';
   static const String imagesBgImg = 'assets/images/bg_img.png';
+  static const String imagesIntroImg1 = 'assets/images/intro_img1.png';
 
 }
