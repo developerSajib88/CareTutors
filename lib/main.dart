@@ -1,13 +1,13 @@
 import 'package:caretutors/controller/auth_controller/auth_controller.dart';
 import 'package:caretutors/controller/navigation_controller/navigation_controller.dart';
 import 'package:caretutors/controller/onboarding_controller/onboarding_controller.dart';
+import 'package:caretutors/view/screen/auth_screen/sign_up_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
 
 import 'theme/app_theme.dart';
-import 'view/screen/others_screen/splash_screen.dart';
 
 void main()async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: AppTheme.themeData,
-      home: const SplashScreen(),
+      home: const SignUpScreen( ),
     );
   }
 }

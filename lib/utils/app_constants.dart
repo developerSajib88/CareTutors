@@ -8,6 +8,13 @@ class AppConstants{
   static const String COMPLETED = "Completed";
   static const String PROGRESS = "Progress";
   static const String CANCELED = "Canceled";
+  static const String JOIN_WITH_US = "Join With Us";
+  static const String EMAIL = "Email";
+  static const String FIRST_NAME = "First Name";
+  static const String LAST_NAME = "Last Name";
+  static const String MOBILE = "Mobile";
+  static const String PASSWORD = "Password";
+  static const String CONFIRM_PASSWORD = "Confirm Password";
 
   /// Dummy Text
   static const String LOREM_TEXT = "Lorem Ipsum is simply dummy text";
