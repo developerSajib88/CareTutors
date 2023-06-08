@@ -1,4 +1,6 @@
+import 'package:caretutors/controller/auth_controller/auth_controller.dart';
 import 'package:caretutors/controller/navigation_controller/navigation_controller.dart';
+import 'package:caretutors/controller/task_controller/task_controller.dart';
 import 'package:caretutors/utils/app_colors.dart';
 import 'package:caretutors/utils/app_constants.dart';
 import 'package:caretutors/view/screen/navigation_screen/cancel_task_screen.dart';
@@ -22,6 +24,21 @@ class BottomNavigationScreen extends StatefulWidget {
 class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
 
   List<Widget> navigationScreen = [const NewTaskScreen(),const CompletedTaskScreen(),const CancelTaskScreen(),const ProgressTaskScreen()];
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    /// This function for fetching data from server
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      context.read<TaskController>().getNewTaskList(context.read<AuthController>().userToken);
+      context.read<TaskController>().getCompletedTaskList(context.read<AuthController>().userToken);
+      context.read<TaskController>().getCancelTaskList(context.read<AuthController>().userToken);
+      context.read<TaskController>().getProgressTaskList(context.read<AuthController>().userToken);
+    });
+
+  }
 
   @override
   Widget build(BuildContext context) {

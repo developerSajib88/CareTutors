@@ -8,7 +8,7 @@ import 'package:toast/toast.dart';
 
 class AuthController extends ChangeNotifier{
   
-  String userToken = "";
+  String userToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODYzMTkyODQsImRhdGEiOiJyYWJiaWxpZGxjQGdtYWlsLmNvbSIsImlhdCI6MTY4NjIzMjg4NH0.5uQEjApMUzlM9HEZSH30MCflbSStFJKJmUaD9knqzWA";
   String userName = "";
   String userEmail = "";
   
@@ -41,7 +41,6 @@ class AuthController extends ChangeNotifier{
   
   /// Log in function
   Future<bool> userLogIn(String email,password)async{
-    print("===============================================================================");
     http.Response response = await http.post(Uri.parse(AppConstants.LOGIN_ACCOUNT),
     headers: AppConstants.REQUEST_HEADER,
     body: jsonEncode(
@@ -53,7 +52,7 @@ class AuthController extends ChangeNotifier{
 
     Map<String,dynamic> getMap = jsonDecode(response.body);
     if(response.statusCode == 200 && getMap["status"] == "success"){
-      userToken = getMap["token"]??"";
+     // userToken = getMap["token"]??"";
       userEmail = getMap["data"]["email"]??"";
       userName = getMap["data"]["firstName"]+" "+getMap["data"]["lastName"];
 

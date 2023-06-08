@@ -7,8 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
-import 'package:toast/toast.dart';
 
+import 'controller/task_controller/task_controller.dart';
 import 'theme/app_theme.dart';
 
 void main()async{
@@ -18,6 +18,7 @@ void main()async{
     ChangeNotifierProvider(create: (context)=> AuthController()),
     ChangeNotifierProvider(create: (context)=> BottomNavigationController()),
     ChangeNotifierProvider(create: (context)=> OnboardingController()),
+    ChangeNotifierProvider(create: (context)=> TaskController()),
   ],
   child: const MyApp(),
   ));
