@@ -9,6 +9,8 @@ import 'package:toast/toast.dart';
 class AuthController extends ChangeNotifier{
   
   String userToken = "";
+  String userName = "";
+  String userEmail = "";
   
   
   /// Create account function
@@ -52,11 +54,14 @@ class AuthController extends ChangeNotifier{
     Map<String,dynamic> getMap = jsonDecode(response.body);
     if(response.statusCode == 200 && getMap["status"] == "success"){
       userToken = getMap["token"]??"";
+      userEmail = getMap["data"]["email"]??"";
+      userName = getMap["data"]["firstName"]+" "+getMap["data"]["lastName"];
+
       notifyListeners();
       Toast.show("Success", duration: Toast.lengthShort, gravity:  Toast.bottom,backgroundColor: AppColors.blackColor);
       return true;
     }else{
-      Toast.show("Failed! Try again", duration: Toast.lengthShort, gravity:  Toast.bottom,backgroundColor: AppColors.blackColor);
+      Toast.show(getMap["status"], duration: Toast.lengthShort, gravity:  Toast.bottom,backgroundColor: AppColors.blackColor);
       return false;
     }
   }

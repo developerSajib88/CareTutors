@@ -1,6 +1,8 @@
+import 'package:caretutors/controller/auth_controller/auth_controller.dart';
 import 'package:caretutors/utils/app_colors.dart';
 import 'package:caretutors/utils/images.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class CustomAppBar extends StatelessWidget {
   Widget child;
@@ -8,6 +10,9 @@ class CustomAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    AuthController authController = Provider.of<AuthController>(context);
+
     return SizedBox(width: double.infinity,height: double.infinity,
     child: Column(children: [
 
@@ -20,10 +25,10 @@ class CustomAppBar extends StatelessWidget {
 
           const SizedBox(width: 5,),
 
-          Column(crossAxisAlignment: CrossAxisAlignment.start,mainAxisAlignment: MainAxisAlignment.start,children: const [
-            Spacer(),
-            Text("Sajib Hasan",style: TextStyle(color: AppColors.defaultWhite,fontWeight: FontWeight.w600),),
-            Text("developersajib@gmail.com",style: TextStyle(color: AppColors.defaultWhite,fontSize: 12),),
+          Column(crossAxisAlignment: CrossAxisAlignment.start,mainAxisAlignment: MainAxisAlignment.start,children: [
+            const Spacer(),
+            Text(authController.userName,style: const TextStyle(color: AppColors.defaultWhite,fontWeight: FontWeight.w600),),
+            Text(authController.userEmail,style: const TextStyle(color: AppColors.defaultWhite,fontSize: 12),),
           ],
           )
 

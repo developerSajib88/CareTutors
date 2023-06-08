@@ -32,7 +32,7 @@ class _LogInScreenState extends State<LogInScreen> {
   void sendLogInData(context)async{
     if(formKey.currentState!.validate()){
       loading.value = true;
-      bool result = await Provider.of<AuthController>(context,listen: false).userLogIn(emailController.text, passwordController.text,);
+      bool result = await Provider.of<AuthController>(context,listen: false).userLogIn(emailController.text.trim(), passwordController.text,);
       if(result){
         Navigator.pushReplacement(context, CupertinoPageRoute(builder: (context)=> const BottomNavigationScreen()));
         loading.value = false;
