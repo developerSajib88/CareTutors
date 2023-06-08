@@ -1,7 +1,65 @@
+import 'dart:convert';
+
+import 'package:caretutors/utils/app_colors.dart';
+import 'package:caretutors/utils/app_constants.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:http/http.dart' as http;
+import 'package:toast/toast.dart';
 
 class AuthController extends ChangeNotifier{
+  
+  String userToken = "";
+  
+  
+  /// Create account function
+  Future<bool> accountCreate(String email,firstName,lastName,mobile,password)async{
+    http.Response response = await http.post(Uri.parse(AppConstants.CREATE_ACCOUNT),
+    headers: AppConstants.REQUEST_HEADER,
+    body: jsonEncode({
+      "email": email,
+      "firstName": firstName,
+      "lastName": lastName,
+      "mobile": mobile,
+      "password": password,
+      "photo":""
+    }));
 
+    Map<String,dynamic> getMap = jsonDecode(response.body);
+    if(response.statusCode == 200 && getMap["status"] == "success"){
+      Toast.show("Success", duration: Toast.lengthShort, gravity:  Toast.bottom,backgroundColor: AppColors.blackColor);
+      return true;
+    }else{
+      Toast.show("Failed! Try again", duration: Toast.lengthShort, gravity:  Toast.bottom,backgroundColor: AppColors.blackColor);
+      return false;
+    }
+    
+  }
+  
+  
+  
+  /// Log in function
+  Future<bool> userLogIn(String email,password)async{
+    print("===============================================================================");
+    http.Response response = await http.post(Uri.parse(AppConstants.LOGIN_ACCOUNT),
+    headers: AppConstants.REQUEST_HEADER,
+    body: jsonEncode(
+        {
+          "email": email,
+          "password": password
+        }
+    ));
 
+    Map<String,dynamic> getMap = jsonDecode(response.body);
+    if(response.statusCode == 200 && getMap["status"] == "success"){
+      userToken = getMap["token"]??"";
+      notifyListeners();
+      Toast.show("Success", duration: Toast.lengthShort, gravity:  Toast.bottom,backgroundColor: AppColors.blackColor);
+      return true;
+    }else{
+      Toast.show("Failed! Try again", duration: Toast.lengthShort, gravity:  Toast.bottom,backgroundColor: AppColors.blackColor);
+      return false;
+    }
+  }
+  
 
 }
