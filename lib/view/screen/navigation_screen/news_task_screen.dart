@@ -30,7 +30,7 @@ class _NewTaskScreenState extends State<NewTaskScreen> {
       child: Consumer<TaskController>(
           builder: (context, controller,_) {
             return RefreshIndicator(
-              onRefresh: ()=> controller.getNewTaskList(Provider.of<AuthController>(context).userToken),
+              onRefresh: ()=> controller.getNewTaskList(Provider.of<AuthController>(context,listen: false).userToken),
               color: AppColors.greenColor,
               child: Visibility(
                 visible: controller.newTaskList != null,
@@ -40,6 +40,7 @@ class _NewTaskScreenState extends State<NewTaskScreen> {
                   replacement: const Center(child: Text("Empty",style: TextStyle(color: AppColors.blackColor,fontWeight: FontWeight.bold),)),
                   child: ListView.builder(
                       itemCount: controller.newTaskList?.data.length,
+                      padding: EdgeInsets.zero,
                       itemBuilder: (context,index){
                         return TaskItemView(
                           statusColor: AppColors.blueColor,

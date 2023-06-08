@@ -30,7 +30,7 @@ class _ProgressTaskScreenState extends State<ProgressTaskScreen> {
       child: Consumer<TaskController>(
           builder: (context, controller,_) {
             return RefreshIndicator(
-              onRefresh: ()=> controller.getProgressTaskList(Provider.of<AuthController>(context).userToken),
+              onRefresh: ()=> controller.getProgressTaskList(Provider.of<AuthController>(context,listen: false).userToken),
               color: AppColors.greenColor,
               child: Visibility(
                 visible: controller.progressTaskList != null,
@@ -40,6 +40,7 @@ class _ProgressTaskScreenState extends State<ProgressTaskScreen> {
                   replacement: const Center(child: Text("Empty",style: TextStyle(color: AppColors.blackColor,fontWeight: FontWeight.bold),)),
                   child: ListView.builder(
                       itemCount: controller.progressTaskList?.data.length,
+                      padding: EdgeInsets.zero,
                       itemBuilder: (context,index){
                         return TaskItemView(
                           statusColor: AppColors.pinkColor,

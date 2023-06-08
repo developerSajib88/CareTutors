@@ -30,7 +30,7 @@ class _CompletedTaskScreenState extends State<CompletedTaskScreen> {
       child: Consumer<TaskController>(
         builder: (context, controller,_) {
           return RefreshIndicator(
-            onRefresh: ()=> controller.getCompletedTaskList(Provider.of<AuthController>(context).userToken),
+            onRefresh: ()=> controller.getCompletedTaskList(Provider.of<AuthController>(context,listen: false).userToken),
             color: AppColors.greenColor,
             child: Visibility(
               visible: controller.completedTaskList != null,
@@ -40,6 +40,7 @@ class _CompletedTaskScreenState extends State<CompletedTaskScreen> {
                 replacement: const Center(child: Text("Empty",style: TextStyle(color: AppColors.blackColor,fontWeight: FontWeight.bold),)),
                 child: ListView.builder(
                   itemCount: controller.completedTaskList?.data.length,
+                    padding: EdgeInsets.zero,
                     itemBuilder: (context,index){
                       return TaskItemView(
                         statusColor: AppColors.greenColor,

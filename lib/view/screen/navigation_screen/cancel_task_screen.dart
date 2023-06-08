@@ -31,7 +31,7 @@ class _CancelTaskScreenState extends State<CancelTaskScreen> {
       child: Consumer<TaskController>(
           builder: (context, controller,_) {
             return RefreshIndicator(
-              onRefresh: ()=> controller.getCancelTaskList(Provider.of<AuthController>(context).userToken),
+              onRefresh: ()=> controller.getCancelTaskList(Provider.of<AuthController>(context,listen: false).userToken),
               color: AppColors.greenColor,
               child: Visibility(
                 visible: controller.cancelTaskList != null,
@@ -41,6 +41,7 @@ class _CancelTaskScreenState extends State<CancelTaskScreen> {
                   replacement: const Center(child: Text("Empty",style: TextStyle(color: AppColors.blackColor,fontWeight: FontWeight.bold),)),
                   child: ListView.builder(
                       itemCount: controller.cancelTaskList?.data.length,
+                      padding: EdgeInsets.zero,
                       itemBuilder: (context,index){
                         return TaskItemView(
                           statusColor: AppColors.redColor,
