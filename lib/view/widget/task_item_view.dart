@@ -1,7 +1,11 @@
 
+import 'package:caretutors/controller/auth_controller/auth_controller.dart';
+import 'package:caretutors/controller/task_controller/task_controller.dart';
 import 'package:caretutors/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import 'package:toast/toast.dart';
 
 import '../../utils/font_styles.dart';
 
@@ -27,8 +31,10 @@ class TaskItemView extends StatefulWidget {
 }
 
 class _TaskItemViewState extends State<TaskItemView> {
+
   @override
   Widget build(BuildContext context) {
+    ToastContext().init(context);
     return Padding(padding: const EdgeInsets.only(bottom: 10,left: 15,right: 15),
       child: Container(width: double.infinity, height: 120,
         decoration: BoxDecoration(borderRadius: BorderRadius.circular(3), color: AppColors.defaultWhite,),
@@ -72,7 +78,16 @@ class _TaskItemViewState extends State<TaskItemView> {
 
                   SizedBox(width: 15, height: 15,
                     child: InkWell(
-                        onTap: (){
+                        onTap: () {
+                          Provider.of<TaskController>(context, listen: false).deleteTask(
+                              widget.getId,
+                              Provider.of<AuthController>(context, listen: false).userToken);
+
+                          Provider.of<TaskController>(context, listen: false).getNewTaskList(Provider.of<AuthController>(context, listen: false).userToken);
+                          Provider.of<TaskController>(context, listen: false).getCompletedTaskList(Provider.of<AuthController>(context, listen: false).userToken);
+                          Provider.of<TaskController>(context, listen: false).getCancelTaskList(Provider.of<AuthController>(context, listen: false).userToken);
+                          Provider.of<TaskController>(context, listen: false).getProgressTaskList(Provider.of<AuthController>(context, listen: false).userToken);
+
                         },
                         child: const Icon(Icons.delete_forever_outlined,color: AppColors.redColor,size: 15,)
                     ),

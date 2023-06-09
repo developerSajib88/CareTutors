@@ -106,8 +106,8 @@ class TaskController extends ChangeNotifier{
         'token' : token
         },
     body: jsonEncode({
-      "title":"My Task",
-      "description":"My Task",
+      "title": title,
+      "description": description,
       "status":"New"
     }));
     Map<String,dynamic> getMap = jsonDecode(response.body);
@@ -118,6 +118,29 @@ class TaskController extends ChangeNotifier{
       Toast.show("Failed! Try again", duration: Toast.lengthShort, gravity:  Toast.bottom,backgroundColor: AppColors.blackColor);
       return false;
     }
+
+  }
+  
+  
+  /// This function is called for deleting task
+  Future deleteTask(var id,token)async{
+    print("========================================");
+    http.Response response = await http.get(Uri.parse("https://task.teamrabbil.com/api/v1/deleteTask/$id"),
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'token' : token
+      },
+    );
+
+    Map<String,dynamic> getMap = jsonDecode(response.body);
+    if(response.statusCode == 200 && getMap["status"] == "success"){
+      Toast.show("Delete", duration: Toast.lengthShort, gravity:  Toast.bottom,backgroundColor: AppColors.redColor);
+    }else{
+      Toast.show("Failed", duration: Toast.lengthShort, gravity:  Toast.bottom,backgroundColor: AppColors.redColor);
+    }
+
+
 
   }
 
