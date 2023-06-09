@@ -7,7 +7,7 @@ class AppConstants{
   static const String CREATE_ACCOUNT = "https://task.teamrabbil.com/api/v1/registration";
   static const String LOGIN_ACCOUNT = "https://task.teamrabbil.com/api/v1/login";
   static const String NEW_TASK_URI = "https://task.teamrabbil.com/api/v1/listTaskByStatus/New";
-  static const String COMPLETD_TASK_URI = "https://task.teamrabbil.com/api/v1/listTaskByStatus/Competed";
+  static const String COMPLETD_TASK_URI = "https://task.teamrabbil.com/api/v1/listTaskByStatus/Completed";
   static const String CANCEL_TASK_URI = "https://task.teamrabbil.com/api/v1/listTaskByStatus/Cancel";
   static const String PROGRESS_TASK_URI = "https://task.teamrabbil.com/api/v1/listTaskByStatus/Progress";
   static const String CREATE_TASK = "https://task.teamrabbil.com/api/v1/createTask";

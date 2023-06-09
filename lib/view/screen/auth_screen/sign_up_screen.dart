@@ -174,7 +174,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                   Text("Have account?",style: FontStyles.titleTextStyle,),
                   TextButton(
-                    onPressed: ()=>Navigator.push(context, CupertinoPageRoute(builder: (context)=>const SignUpScreen())),
+                    onPressed: ()=>Navigator.push(context, CupertinoPageRoute(builder: (context)=>const LogInScreen())),
                     child: const Text("Sign in",style: TextStyle(color: AppColors.greenColor,fontWeight: FontWeight.w700,fontSize: 15),),
                   )
                 ],)
