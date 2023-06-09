@@ -57,7 +57,7 @@ class _NewTaskScreenState extends State<NewTaskScreen> {
                               itemBuilder: (context,index){
                                 return TaskItemView(
                                   statusColor: AppColors.blueColor,
-                                  statusName: "Completed",
+                                  statusName: "New",
                                   title: controller.newTaskList?.data[index].title??"",
                                   description: controller.newTaskList?.data[index].description??"",
                                   publishDate: controller.newTaskList?.data[index].createdDate??"",

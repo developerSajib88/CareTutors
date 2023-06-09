@@ -2,8 +2,8 @@
 import 'package:caretutors/controller/auth_controller/auth_controller.dart';
 import 'package:caretutors/controller/task_controller/task_controller.dart';
 import 'package:caretutors/utils/app_colors.dart';
+import 'package:caretutors/view/widget/bottom_sheet.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:toast/toast.dart';
 
@@ -35,10 +35,13 @@ class _TaskItemViewState extends State<TaskItemView> {
   @override
   Widget build(BuildContext context) {
     ToastContext().init(context);
+
+    TaskController taskController = Provider.of<TaskController>(context);
+
     return Padding(padding: const EdgeInsets.only(bottom: 10,left: 15,right: 15),
-      child: Container(width: double.infinity, height: 120,
+      child: Container(width: double.infinity,
         decoration: BoxDecoration(borderRadius: BorderRadius.circular(3), color: AppColors.defaultWhite,),
-        child: Padding(padding: const EdgeInsets.all(10.0),
+        child: Padding(padding: const EdgeInsets.all(10),
           child: Column(crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(widget.title, style: FontStyles.titleTextStyle),
@@ -68,7 +71,7 @@ class _TaskItemViewState extends State<TaskItemView> {
 
                   SizedBox(width: 15, height: 15,
                     child: InkWell(
-                        onTap: (){},
+                        onTap: ()=> bottomSheet(context, widget.title, widget.description, widget.getId),
                         child: const Icon(Icons.text_snippet_outlined,color: AppColors.greenColor,size: 15,)
                     ),
                   ),
@@ -83,10 +86,10 @@ class _TaskItemViewState extends State<TaskItemView> {
                               widget.getId,
                               Provider.of<AuthController>(context, listen: false).userToken);
 
-                          Provider.of<TaskController>(context, listen: false).getNewTaskList(Provider.of<AuthController>(context, listen: false).userToken);
-                          Provider.of<TaskController>(context, listen: false).getCompletedTaskList(Provider.of<AuthController>(context, listen: false).userToken);
-                          Provider.of<TaskController>(context, listen: false).getCancelTaskList(Provider.of<AuthController>(context, listen: false).userToken);
-                          Provider.of<TaskController>(context, listen: false).getProgressTaskList(Provider.of<AuthController>(context, listen: false).userToken);
+                          taskController.getNewTaskList(Provider.of<AuthController>(context, listen: false).userToken);
+                          taskController.getCompletedTaskList(Provider.of<AuthController>(context, listen: false).userToken);
+                          taskController.getCancelTaskList(Provider.of<AuthController>(context, listen: false).userToken);
+                          taskController.getProgressTaskList(Provider.of<AuthController>(context, listen: false).userToken);
 
                         },
                         child: const Icon(Icons.delete_forever_outlined,color: AppColors.redColor,size: 15,)

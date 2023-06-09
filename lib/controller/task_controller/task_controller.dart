@@ -139,9 +139,26 @@ class TaskController extends ChangeNotifier{
     }else{
       Toast.show("Failed", duration: Toast.lengthShort, gravity:  Toast.bottom,backgroundColor: AppColors.redColor);
     }
+  }
 
 
 
+
+  //This function is calling for update task
+  Future<bool> updateTask(String token, id,taskStack)async{
+    
+    http.Response response = await http.get(Uri.parse("https://task.teamrabbil.com/api/v1/updateTaskStatus/$id/$taskStack"),
+        headers: {'Content-Type': 'application/json', "token": token}
+    );
+
+    Map<String,dynamic> getMap = jsonDecode(response.body);
+    if(response.statusCode == 200 && getMap["status"] == "success"){
+      Toast.show("Your task is update", duration: Toast.lengthShort, gravity:  Toast.bottom,backgroundColor: AppColors.redColor);
+      return true;
+    }else{
+      Toast.show("Update failed", duration: Toast.lengthShort, gravity:  Toast.bottom,backgroundColor: AppColors.redColor);
+      return true;
+    }
   }
 
 
