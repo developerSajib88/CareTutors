@@ -35,7 +35,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   void submitUserData(context)async{
    if(formKey.currentState!.validate()){
      loading.value = true;
-     bool result = await context.read<AuthController>().accountCreate(
+     bool result = await Provider.of<AuthController>(context,listen: false).accountCreate(
          emailController.text.trim(),
          firstNameController.text.trim(),
          lastNameController.text.trim(),

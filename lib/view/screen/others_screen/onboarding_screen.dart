@@ -1,6 +1,7 @@
 import 'package:caretutors/controller/onboarding_controller/onboarding_controller.dart';
 import 'package:caretutors/utils/app_colors.dart';
 import 'package:caretutors/utils/app_constants.dart';
+import 'package:caretutors/view/screen/auth_screen/log_in_screen.dart';
 import 'package:caretutors/view/screen/navigation_screen/bottom_navigation_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -26,7 +27,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               return OnBoardingScreen(
                 onSkip: (){
                   controller.userIsFirstTime = false;
-                  Navigator.pushReplacement(context, CupertinoPageRoute(builder: (context)=> const BottomNavigationScreen()));
+                  Navigator.pushReplacement(context, CupertinoPageRoute(builder: (context)=> const LogInScreen()));
                   controller.checkingUser();
                 },
                 showPrevNextButton: true,
