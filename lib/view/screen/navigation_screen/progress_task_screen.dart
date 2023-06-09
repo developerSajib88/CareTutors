@@ -40,7 +40,7 @@ class _ProgressTaskScreenState extends State<ProgressTaskScreen> {
                   replacement: const Center(child: Text("Empty",style: TextStyle(color: AppColors.blackColor,fontWeight: FontWeight.bold),)),
                   child: ListView.builder(
                       itemCount: controller.progressTaskList?.data.length,
-                      padding: EdgeInsets.zero,
+                      padding: const EdgeInsets.only(top: 10),
                       itemBuilder: (context,index){
                         return TaskItemView(
                           statusColor: AppColors.pinkColor,

@@ -5,7 +5,7 @@ import 'package:caretutors/utils/app_colors.dart';
 import 'package:caretutors/utils/app_constants.dart';
 import 'package:caretutors/view/screen/navigation_screen/bottom_navigation_screen.dart';
 import 'package:caretutors/view/screen/others_screen/onboarding_screen.dart';
-import 'package:caretutors/view/widget/backgrount_widget.dart';
+import 'package:caretutors/view/widget/background_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

@@ -7,6 +7,9 @@ import 'package:caretutors/model/task_model/progress_task_model.dart';
 import 'package:caretutors/utils/app_constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
+import 'package:toast/toast.dart';
+
+import '../../utils/app_colors.dart';
 
 class TaskController extends ChangeNotifier{
 
@@ -91,7 +94,32 @@ class TaskController extends ChangeNotifier{
     }
 
   }
+  
+  
+  
+  /// This function for Create new todos
+  Future<bool> createNewTask(String token,title,description)async{
+    http.Response response = await http.post(Uri.parse(AppConstants.CREATE_TASK),
+    headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'token' : token
+        },
+    body: jsonEncode({
+      "title":"My Task",
+      "description":"My Task",
+      "status":"New"
+    }));
+    Map<String,dynamic> getMap = jsonDecode(response.body);
+    if(response.statusCode == 200 && getMap["status"] == "success" ){
+      Toast.show("Success", duration: Toast.lengthShort, gravity:  Toast.bottom,backgroundColor: AppColors.blackColor);
+      return true;
+    }else{
+      Toast.show("Failed! Try again", duration: Toast.lengthShort, gravity:  Toast.bottom,backgroundColor: AppColors.blackColor);
+      return false;
+    }
 
+  }
 
 
 
