@@ -29,6 +29,7 @@ class _StatusCountState extends State<StatusCount> {
 
                 child: Padding(padding: const EdgeInsets.only(top: 7,left: 15),
                   child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                    //=========================================================================>>>>>>New Status count Here
                       Text(controller.newTaskList?.data.length.toString()??"0",style: GoogleFonts.poppins(fontSize: 15,color: AppColors.blackColor,fontWeight: FontWeight.bold),),
                       Text("New Task",style: GoogleFonts.poppins(fontSize: 10,color: AppColors.greyColor,fontWeight: FontWeight.bold),),
                     ],
@@ -51,6 +52,7 @@ class _StatusCountState extends State<StatusCount> {
                 child: Padding(padding: const EdgeInsets.only(top: 7,left: 15),
                   child: Column(crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      //=========================================================================>>>>>>Completed Status count Here
                       Text(controller.completedTaskList?.data.length.toString()??"0",style: GoogleFonts.poppins(fontSize: 15,color: AppColors.blackColor,fontWeight: FontWeight.bold),),
                       Text("Completed",style: GoogleFonts.poppins(fontSize: 10,color: AppColors.greyColor,fontWeight: FontWeight.bold),),
                     ],
@@ -71,7 +73,8 @@ class _StatusCountState extends State<StatusCount> {
 
                 child: Padding(padding: const EdgeInsets.only(top: 7,left: 15),
                   child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                      Text(controller.cancelTaskList?.data.length.toString()??"0",style: GoogleFonts.poppins(fontSize: 15,color: AppColors.blackColor,fontWeight: FontWeight.bold),),
+                    //=========================================================================>>>>>>Cancel Status count Here
+                    Text(controller.cancelTaskList?.data.length.toString()??"0",style: GoogleFonts.poppins(fontSize: 15,color: AppColors.blackColor,fontWeight: FontWeight.bold),),
                       Text("Cancel",style: GoogleFonts.poppins(fontSize: 10,color: AppColors.greyColor,fontWeight: FontWeight.bold),),
                     ],
                   ),
@@ -91,7 +94,10 @@ class _StatusCountState extends State<StatusCount> {
 
                 child: Padding(padding: const EdgeInsets.only(top: 7,left: 15),
                   child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                      Text(controller.progressTaskList?.data.length.toString()??"0",style: GoogleFonts.poppins(fontSize: 15,color: AppColors.blackColor,fontWeight: FontWeight.bold),),
+
+                    //=========================================================================>>>>>>Progress Status count Here
+
+                    Text(controller.progressTaskList?.data.length.toString()??"0",style: GoogleFonts.poppins(fontSize: 15,color: AppColors.blackColor,fontWeight: FontWeight.bold),),
                       Text("Progress",style: GoogleFonts.poppins(fontSize: 10,color: AppColors.greyColor,fontWeight: FontWeight.bold),),
                     ],
                   ),

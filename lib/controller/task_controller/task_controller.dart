@@ -124,7 +124,6 @@ class TaskController extends ChangeNotifier{
   
   /// This function is called for deleting task
   Future deleteTask(var id,token)async{
-    print("========================================");
     http.Response response = await http.get(Uri.parse("https://task.teamrabbil.com/api/v1/deleteTask/$id"),
     headers: {
       'Content-Type': 'application/json',
@@ -144,7 +143,7 @@ class TaskController extends ChangeNotifier{
 
 
 
-  //This function is calling for update task
+  ///This function is calling for update task
   Future<bool> updateTask(String token, id,taskStack)async{
     
     http.Response response = await http.get(Uri.parse("https://task.teamrabbil.com/api/v1/updateTaskStatus/$id/$taskStack"),

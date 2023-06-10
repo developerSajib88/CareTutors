@@ -73,6 +73,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
                 const SizedBox(height: 20,),
 
+
+                //=======================================>>>>>Email here
                 CustomTextForm(
                   controller: emailController,
                   hintText: AppConstants.EMAIL,
@@ -88,6 +90,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
                 const SizedBox(height: 5,),
 
+                //=======================================>>>>>First Name here
                 CustomTextForm(
                   controller: firstNameController,
                   keyboardType: TextInputType.name,
@@ -100,6 +103,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
                 const SizedBox(height: 5,),
 
+                //=======================================>>>>>Last here
                 CustomTextForm(
                   controller: lastNameController,
                   keyboardType: TextInputType.name,
@@ -111,6 +115,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
                 const SizedBox(height: 5,),
 
+                //=======================================>>>>>Mobile Number text form here
                 CustomTextForm(
                   controller: mobileController,
                   keyboardType: TextInputType.phone,
@@ -126,6 +131,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
                 const SizedBox(height: 5,),
 
+                //=======================================>>>>>Password text field here
                 CustomTextForm(
                   controller: passwordController,
                   keyboardType: TextInputType.visiblePassword,
@@ -140,6 +146,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 const SizedBox(height: 5,),
 
 
+                //=======================================>>>>>Confirm password text field here
                 CustomTextForm(
                   obscureText: true,
                   controller: confirmPasswordController,
@@ -154,6 +161,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
                 const SizedBox(height: 20,),
 
+                //===================================================>>>>Registration button here
                 ValueListenableBuilder(
                     valueListenable: loading,
                     builder: (context,value,_){
@@ -171,6 +179,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
 
 
+                //=======================================>>>>>Move to Log in screen here
                 Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                   Text("Have account?",style: FontStyles.titleTextStyle,),
                   TextButton(

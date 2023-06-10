@@ -62,6 +62,7 @@ class _LogInScreenState extends State<LogInScreen> {
 
                 const SizedBox(height: 20,),
 
+                //=======================================>>>>>Email here
                 CustomTextForm(
                   controller: emailController,
                   hintText: AppConstants.EMAIL,
@@ -77,7 +78,7 @@ class _LogInScreenState extends State<LogInScreen> {
 
                 const SizedBox(height: 5,),
 
-
+                //=======================================>>>>>Password here
                 CustomTextForm(
                   obscureText: true,
                   controller: passwordController,
@@ -93,6 +94,7 @@ class _LogInScreenState extends State<LogInScreen> {
 
                 const SizedBox(height: 20,),
 
+                //=======================================>>>>>Log in button here
                 ValueListenableBuilder(
                     valueListenable: loading,
                     builder: (context,value,_){
@@ -112,7 +114,7 @@ class _LogInScreenState extends State<LogInScreen> {
 
                 const  SizedBox(height: 10,),
 
-
+                //=======================================>>>>>Navigate Registration screen here
                 Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                   Text("Don't have account?",style: FontStyles.titleTextStyle,),
                   TextButton(

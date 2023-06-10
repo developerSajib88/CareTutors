@@ -44,9 +44,13 @@ class _TaskItemViewState extends State<TaskItemView> {
         child: Padding(padding: const EdgeInsets.all(10),
           child: Column(crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              //========================================================>>>>>Task item Title here
               Text(widget.title, style: FontStyles.titleTextStyle),
+
+              //========================================================>>>>>Task item Description here
               Text(widget.description, maxLines: 2, overflow: TextOverflow.ellipsis, style:FontStyles.descriptionTextStyle),
 
+              //========================================================>>>>>Task item date here
               Text(widget.publishDate, style: FontStyles.dateTextStyle),
 
               const SizedBox(height: 5.0,),
@@ -69,6 +73,7 @@ class _TaskItemViewState extends State<TaskItemView> {
 
                   const Spacer(),
 
+                  //=================================================>>>>>Task item edit button here
                   SizedBox(width: 15, height: 15,
                     child: InkWell(
                         onTap: ()=> bottomSheet(context, widget.title, widget.description, widget.getId),
@@ -79,6 +84,7 @@ class _TaskItemViewState extends State<TaskItemView> {
                   const SizedBox(width: 5,),
 
 
+                  //========================================================>>>>>Task item Delete here
                   SizedBox(width: 15, height: 15,
                     child: InkWell(
                         onTap: () {

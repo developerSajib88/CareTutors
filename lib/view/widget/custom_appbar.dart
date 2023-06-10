@@ -27,6 +27,8 @@ class CustomAppBar extends StatelessWidget {
 
           Column(crossAxisAlignment: CrossAxisAlignment.start,mainAxisAlignment: MainAxisAlignment.start,children: [
             const Spacer(),
+
+            //==================================================>>>App bar user Name and Email text here
             Text(authController.userName,style: const TextStyle(color: AppColors.defaultWhite,fontWeight: FontWeight.w600),),
             Text(authController.userEmail,style: const TextStyle(color: AppColors.defaultWhite,fontSize: 12),),
           ],
