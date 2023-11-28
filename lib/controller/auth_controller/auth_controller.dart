@@ -7,6 +7,8 @@ import 'package:http/http.dart' as http;
 import 'package:toast/toast.dart';
 
 class AuthController extends ChangeNotifier{
+  final http.Client client;
+  AuthController({required this.client});
   
   String userToken = "";
   String userName = "";
@@ -41,7 +43,7 @@ class AuthController extends ChangeNotifier{
   
   /// Log in function
   Future<bool> userLogIn(String email,password)async{
-    http.Response response = await http.post(Uri.parse(AppConstants.LOGIN_ACCOUNT),
+    http.Response response = await client.post(Uri.parse(AppConstants.LOGIN_ACCOUNT),
     headers: AppConstants.REQUEST_HEADER,
     body: jsonEncode(
         {
@@ -50,6 +52,8 @@ class AuthController extends ChangeNotifier{
         }
     ));
 
+    print(">>>>>>>>>>>>>${response.body}");
+
     Map<String,dynamic> getMap = jsonDecode(response.body);
     if(response.statusCode == 200 && getMap["status"] == "success"){
       userToken = getMap["token"]??"";
@@ -57,10 +61,10 @@ class AuthController extends ChangeNotifier{
       userName = getMap["data"]["firstName"]+" "+getMap["data"]["lastName"];
 
       notifyListeners();
-      Toast.show("Success", duration: Toast.lengthShort, gravity:  Toast.bottom,backgroundColor: AppColors.blackColor);
+      //Toast.show("Success", duration: Toast.lengthShort, gravity:  Toast.bottom,backgroundColor: AppColors.blackColor);
       return true;
     }else{
-      Toast.show(getMap["status"], duration: Toast.lengthShort, gravity:  Toast.bottom,backgroundColor: AppColors.blackColor);
+      //Toast.show(getMap["status"], duration: Toast.lengthShort, gravity:  Toast.bottom,backgroundColor: AppColors.blackColor);
       return false;
     }
   }

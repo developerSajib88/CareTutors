@@ -12,6 +12,8 @@ import 'package:toast/toast.dart';
 import '../../utils/app_colors.dart';
 
 class TaskController extends ChangeNotifier{
+  final http.Client client;
+  TaskController({required this.client});
 
   NewTaskList? newTaskList;
   CompletedTaskList? completedTaskList;
@@ -27,6 +29,7 @@ class TaskController extends ChangeNotifier{
         }
     );
 
+    print(">>>>>>>>>>>>>>>>>>NewTask:${response.body}");
     Map<String,dynamic> getMap = jsonDecode(response.body);
     if(response.statusCode == 200 && getMap["status"] == "success"){
       newTaskList = newTaskListFromJson(response.body);
